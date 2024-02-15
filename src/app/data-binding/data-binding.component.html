@@ -1,0 +1,17 @@
+<!-- One way binding -->
+<h2> {{ firstName }} {{ lastName }}</h2>
+<!-- Two way binding -->
+<!-- {{ }} - INTERPOLATION and [innerText] - Property binding -->
+
+<h1 [innerText]="title"></h1>
+<br>
+<input type="text" [(ngModel)]="title">
+<br><br>
+<!-- Event binding -->
+<button (click)="clickMe()">Click Me</button>
+
+<p>You have clicked : {{ clickCount }}</p>
+
+
+
+
