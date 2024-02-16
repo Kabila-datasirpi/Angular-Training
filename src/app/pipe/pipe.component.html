@@ -1,0 +1,19 @@
+<h1> uppercase: 
+    {{ title | uppercase }} <br/></h1>  
+ <h1> lowercase: 
+   {{ title | lowercase }} <br/></h1>  
+<h1> date: 
+   {{ currentDate | date  }} <br/></h1>  
+<h1> fulldate: 
+    {{ currentDate | date:'fullDate'  }} <br/></h1>  
+<h1> shortdate: 
+    {{ currentDate | date:'short'  }} <br/></h1>  
+<h1> json: 
+    {{ jsondata | json  }} <br/></h1>  
+<h1> percent: 
+    {{ myNumber | percent  }} <br/></h1>  
+<h1> titlepipe: 
+     {{ myString | titlecase  }} <br/></h1>  
+<h1> slicepipe: 
+    {{ sentence | slice:0:7 }} <br/></h1> 
+<h1>custom pipe:{{ 'hello world' | suffix:'!!!' }}</h1>
