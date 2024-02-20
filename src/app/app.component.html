@@ -1,0 +1,9 @@
+<h1>parent component</h1>
+<input type="text" placeholder="enter the text" [(ngModel)]="name">
+
+<p>{{name}}</p>
+<p>{{tempdata}}</p>
+<hr>
+
+<app-child [parentName]="name"  (messageevent)="newMessage($event)"></app-child>
+
