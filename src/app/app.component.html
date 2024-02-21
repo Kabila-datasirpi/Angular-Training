@@ -1,0 +1,24 @@
+
+<!-- ngif directive -->
+<h2>ngif directive</h2>
+<div *ngIf="isLoggedIn">
+  <p>Welcome, {{ username }}!</p>
+</div>
+
+<!-- ng for directive -->
+<h2>ngfor directive</h2>
+<ul>
+  <li *ngFor="let item of items">{{ item }}</li>
+</ul>
+
+<!-- ngswitch -->
+<h2>ngswitch</h2>
+<div [ngSwitch]="num">
+  <div *ngSwitchCase="1">One</div>
+  <div *ngSwitchCase="2">Two</div>
+  <div *ngSwitchCase="3">Three</div>
+  <div *ngSwitchCase="4">Four</div>
+  <div *ngSwitchCase="5">Five</div>
+  <div *ngSwitchCase="6">Six</div>
+  <div *ngSwitchCase="7">Seven</div>
+</div>
