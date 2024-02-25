@@ -1,0 +1,15 @@
+<div *ngIf="age > 18">
+  Age is greater than 18
+  </div>
+  <div *ngIf="age <= 18">
+  Age is lesser than 18
+  </div>
+  
+  
+<div *ngIf="age > 18; then conditionTrue; else conditionFalse"></div>
+<ng-template #conditionTrue>
+<h1>Age is greater than 18 inside the ng template</h1>
+</ng-template>
+<ng-template #conditionFalse>
+<h1>Age is less than 18 inside the ng template</h1>
+</ng-template>
