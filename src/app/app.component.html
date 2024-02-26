@@ -1,0 +1,63 @@
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <label for="first-name">First Name: </label>
+    <input id="first-name" type="text" formControlName="firstName" />
+  
+    <div
+      *ngIf="signUpForm.controls.firstName.invalid && (signUpForm.controls.firstName.dirty || signUpForm.controls.firstName.touched)"
+    >
+      <div *ngIf="signUpForm.controls.firstName.hasError('required')">
+        First name is required.
+      </div>
+      <div *ngIf="signUpForm.controls.firstName.hasError('minlength')">
+        First name must be at least 5 characters long.
+      </div>
+    </div>
+    <br /><br>
+  
+    <label for="last-name">Last Name: </label>
+    <input id="last-name" type="text" formControlName="lastName" />
+  
+    <div
+      *ngIf="signUpForm.controls.lastName.invalid && (signUpForm.controls.firstName.dirty || signUpForm.controls.lastName.touched)"
+    >
+      <div *ngIf="signUpForm.controls.lastName.hasError('required')">
+        Last name is required.
+      </div>
+      <div *ngIf="signUpForm.controls.lastName.hasError('minlength')">
+        Last name must be at least 5 characters long.
+      </div>
+    </div>
+    <br />
+  
+    <div formGroupName="address">
+      <h2>Address</h2>
+  
+      <label for="street">Street: </label>
+      <input id="street" type="text" formControlName="street" />
+      <br /><br>
+  
+      <div
+        *ngIf="signUpForm.controls.address.controls.street.invalid && (signUpForm.controls.address.controls.street.dirty || signUpForm.controls.address.controls.street.touched)"
+      >
+        <div *ngIf="signUpForm.controls.address.hasError('required')">
+          street is required.
+        </div>
+        <div
+          *ngIf="signUpForm.controls.address.hasError('minlength')"
+        >
+          Street must be 5 characters long.
+        </div>
+      </div>
+  
+      <label for="city">City: </label>
+      <input id="city" type="text" formControlName="city" />
+      <br /><br>
+  
+      <label for="region">Region: </label>
+      <input id="region" type="text" formControlName="region" />
+      <br /><br>
+  
+      <!-- <button type="button" (click)="updateProfile()">Update Profile</button> -->
+      <button type="submit" [disabled]="!signUpForm.valid">Submit Profile</button>
+    </div>
+  </form>
