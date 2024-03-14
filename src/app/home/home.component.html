@@ -1,0 +1,48 @@
+<div class="split-screen-container">
+    <div class="left-container">
+    <!-- <img src="https://dev.trojanae.com/assets/image/web/bg_not_logged_in.png" width="100%" height="100%"alt="Image"> -->
+    <img src="../assets/images/logo_trojan.png" alt="trojan logo" id="logo" height="225px" width="195px">
+   <div class="content">
+    <h4>Welcome to</h4>
+    <h2>ALLOCATION SYSTEM</h2>
+    <span class="line"></span>
+    
+  
+    <h3>Rent any type of special Equipment in<br> minutes.Save your time and Money.</h3>
+   </div>
+  </div>
+    <div class="right-container">
+
+    <div class="logincontainer">
+      <h2 class="title">LOGIN</h2>
+      
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <label for="email">Email:</label><br><br>
+        <input type="text" id="email" formControlName="email"style="width: 500px;height: 50px; border-radius: 5px; "><br><br>
+        <small *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required','email')"class="text-danger">Email is required</small>
+        
+        
+        <div class="passcon">
+        <label for="password">Password:</label><br><br>
+        <input type="{{showPassword ? 'text' : 'password'}}" id="username" formControlName="password" style="width: 500px;height: 50px; border-radius: 5px; "><br><br>
+        <button class="eye_icon" (click)="togglePassword()">
+          <img  [src]="showPassword ? '../assets/images/eye-regular.jpg' : '../assets/images/eye-slash-solid.jpg'" alt="Toggle" height="10px" width="15px">
+          </button>
+        </div>
+       
+       
+        <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')"class="text-danger">password is required</small>
+                <p *ngIf="loginForm.controls['password'].hasError('minlength')" class="text-danger">minimum 6 character is required</p>
+                <p *ngIf="loginForm.controls['password'].hasError('pattern')" class="text-danger">minimum 2 numbers and one special character is required</p>
+
+                <a routerLink="/forgotpass"  style="text-decoration: none; float: right;" >Forgot Password?</a><br><br>
+                
+                
+        <button  type="submit" class="btn btn-primary" style="width: 500px;height: 50px; border-radius: 5px; background-color:#1444c5; ">Login</button><br><br>
+        <h6 >Having troubles? <a style="color: blue; text-decoration: none;" routerLink="/help">Get help</a></h6>
+      </form>
+    </div>
+         
+    </div>
+    
+  </div>
