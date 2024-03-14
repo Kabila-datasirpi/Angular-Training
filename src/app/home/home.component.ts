@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit {
   showPassword: boolean = false;
   authToken!: string;
  
-constructor(private formBuilder: FormBuilder,private router: Router) { }
+constructor(private formBuilder: FormBuilder,private router: Router, private httpClient: HttpClient) { }
 
   ngOnInit(): void {
 
@@ -33,7 +34,14 @@ constructor(private formBuilder: FormBuilder,private router: Router) { }
     this.authToken=this.randomtoken()
     localStorage.setItem('authToken', this.authToken);
     console.log(this.loginForm.value);
+    let headers = new HttpHeaders({ 'Content-Type': 'application/JSON' });
+    this.httpClient.post("http://localhost:8090/auth/login", {
+      "email": this.loginForm.value.email,
+      "password": this.loginForm.value.password
+  }, { headers: headers }).subscribe(res => {
+    console.log(res);
     
+  })
     this.router.navigate(['/dashboard']);
     }
   }
