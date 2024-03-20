@@ -1,5 +1,8 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-forgotpassword',
@@ -9,13 +12,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ForgotpasswordComponent implements OnInit {
   loginForm!: FormGroup;
   showPassword: boolean = false;
-  constructor(private formBuilder: FormBuilder) { }
+  http: any;
+ 
+  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) { }
 
   ngOnInit(): void {
 
     this.loginForm = this.formBuilder.group({
-      password: ['', [Validators.required,Validators.minLength(6),Validators.pattern(/^(?=.*\d.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).*$/)]],
-      newpassword:['', [Validators.required,Validators.minLength(6),Validators.pattern(/^(?=.*\d.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).*$/)]]
+      email: ['', Validators.required],
+      newPassword: ['', [Validators.required,Validators.minLength(6),Validators.pattern(/^(?=.*\d.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).*$/)]],
+      confirmPassword:['', [Validators.required,Validators.minLength(6),Validators.pattern(/^(?=.*\d.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).*$/)]]
     });
   }
   togglePassword() {
@@ -25,6 +31,21 @@ export class ForgotpasswordComponent implements OnInit {
   onSubmit() {
     if (this.loginForm.valid) {
       console.log(this.loginForm.value);
+      console.log(this.loginForm.value);
+
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    
+    this.httpClient.put("http://localhost:8090/auth/forgot-password", {
+      "email": this.loginForm.value.email,
+      "newPassword": this.loginForm.value.newPassword,
+      "confirmPassword":this.loginForm.value.confirmPassword
+
+  }, { headers: headers }).subscribe((res: any) => {
+    console.log(res);
+    
+  })
   }
+
+ 
 }
 }

@@ -9,6 +9,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { LoginComponent } from './login/login.component';
 import { GethelpComponent } from './gethelp/gethelp.component';
+import { CreateRequestComponent } from './create-request/create-request.component';
+import { TabledataComponent } from './tabledata/tabledata.component';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +20,9 @@ import { GethelpComponent } from './gethelp/gethelp.component';
     DashboardComponent,
     ForgotpasswordComponent,
     LoginComponent,
-    GethelpComponent
+    GethelpComponent,
+    CreateRequestComponent,
+    TabledataComponent
   ],
   imports: [
     BrowserModule,

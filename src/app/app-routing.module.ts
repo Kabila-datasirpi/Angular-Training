@@ -4,12 +4,25 @@ import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { GethelpComponent } from './gethelp/gethelp.component';
+import { CreateRequestComponent } from './create-request/create-request.component';
+import { TabledataComponent } from './tabledata/tabledata.component';
+import { AuthguardGuard } from './authguard.guard';
+
 
 const routes: Routes = [
-  { path: 'login', component: HomeComponent },
-  { path: 'dashboard', component: DashboardComponent},
+  { path: 'login', component: HomeComponent, },
+  { path: 'dashboard', component: DashboardComponent, 
+  children:[ {path: 'request', component:CreateRequestComponent},
+  {path: 'table', component:TabledataComponent}
+]},
   {path: 'forgotpass', component: ForgotpasswordComponent},
-  {path: 'help', component: GethelpComponent}
+  {path: 'help', component: GethelpComponent},
+ 
+  
+
+  
+
+
 ];
 
 @NgModule({

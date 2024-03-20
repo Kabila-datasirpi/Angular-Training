@@ -20,14 +20,14 @@
         <label for="email">Email:</label><br><br>
         <input type="text" id="email" formControlName="email"style="width: 500px;height: 50px; border-radius: 5px; "><br><br>
         <small *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required','email')"class="text-danger">Email is required</small>
-        
+        <p *ngIf="loginForm.controls['email'].hasError('pattern')" class="text-danger">Email is not valid</p>
         
         <div class="passcon">
         <label for="password">Password:</label><br><br>
         <input type="{{showPassword ? 'text' : 'password'}}" id="username" formControlName="password" style="width: 500px;height: 50px; border-radius: 5px; "><br><br>
-        <button class="eye_icon" (click)="togglePassword()">
-          <img  [src]="showPassword ? '../assets/images/eye-regular.jpg' : '../assets/images/eye-slash-solid.jpg'" alt="Toggle" height="10px" width="15px">
-          </button>
+        <div class="eye_icon" >
+          <img  (click)="togglePassword()" [src]="showPassword ? '../assets/images/eye-regular.jpg' : '../assets/images/eye-slash-solid.jpg'" alt="Toggle" height="10px" width="15px">
+        </div>
         </div>
        
        
@@ -38,7 +38,7 @@
                 <a routerLink="/forgotpass"  style="text-decoration: none; float: right;" >Forgot Password?</a><br><br>
                 
                 
-        <button  type="submit" class="btn btn-primary" style="width: 500px;height: 50px; border-radius: 5px; background-color:#1444c5; ">Login</button><br><br>
+        <button  type="submit"  class="btn btn-primary" [disabled]="loginForm.invalid" style="width: 500px;height: 50px; border-radius: 5px; background-color:#1444c5; ">Login</button><br><br>
         <h6 >Having troubles? <a style="color: blue; text-decoration: none;" routerLink="/help">Get help</a></h6>
       </form>
     </div>

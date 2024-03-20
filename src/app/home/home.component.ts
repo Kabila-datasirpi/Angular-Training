@@ -13,48 +13,43 @@ export class HomeComponent implements OnInit {
   loginForm!: FormGroup;
   showPassword: boolean = false;
   authToken!: string;
- 
+  eye: boolean = false;
 constructor(private formBuilder: FormBuilder,private router: Router, private httpClient: HttpClient) { }
 
   ngOnInit(): void {
 
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
+      email: ['', [Validators.required,Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]],
       password: ['', [Validators.required,Validators.minLength(6),Validators.pattern(/^(?=.*\d.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).*$/)]]
     });
   }
 
-  togglePassword() {
-    this.showPassword = !this.showPassword;
-  }
+ 
   onSubmit() {
+  
     if (this.loginForm.valid) {
-    localStorage.setItem('email', this.loginForm.value.email);
-    localStorage.setItem('password', this.loginForm.value.password);
-    this.authToken=this.randomtoken()
-    localStorage.setItem('authToken', this.authToken);
+    // localStorage.setItem('email', this.loginForm.value.email);
+    // localStorage.setItem('password', this.loginForm.value.password);
+    // this.authToken=this.randomtoken()
+    // localStorage.setItem('authToken', this.authToken);
+    
     console.log(this.loginForm.value);
-    let headers = new HttpHeaders({ 'Content-Type': 'application/JSON' });
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     this.httpClient.post("http://localhost:8090/auth/login", {
       "email": this.loginForm.value.email,
       "password": this.loginForm.value.password
   }, { headers: headers }).subscribe(res => {
     console.log(res);
+    localStorage.setItem('authtoken',JSON.stringify(res))
+    
     
   })
     this.router.navigate(['/dashboard']);
     }
   }
-
-  randomtoken(){
-    const tokenLength = 32;
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let token = '';
-  
-    for (let i = 0; i < tokenLength; i++) {
-      token += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-  
-    return token;
+ togglePassword() {
+    
+    this.showPassword = !this.showPassword;
   }
+  
 }
