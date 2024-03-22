@@ -1,38 +1,20 @@
-<!-- <div class="main">
-<div class="project details">
-   <div class="con">
-    <label for="project Name">Project Name</label><br>
-    <input type="text">
-    <label for="Requition Node">Requition Node</label><br>
-    <input type="text" >
-</div>
-</div>
-
-<div class="Equipment Details">
-    <div class="equipmentcon">
-    <h4>item#1</h4>
-    <label for="Equipment type">Equipment Type</label>
-    <input type="text">
-    <div>
-
-</div>
-</div> -->
 
 <div class="maincontainer">
+  <form [formGroup]="requestCreateForm" (ngSubmit)="onSubmit()">
+
     <div class="Project">
        <div class="projectname">
         <label for="project">Project</label>
-        <select  name="options">
+        <select name="options" formControlName="ProjectName">
           <option>----select----</option>
-          <option *ngfor="let project of apiData">
-            {{project.id}}
-            {{project.projectname}}
+          <option *ngFor="let project of apiData" [value]="project.id">
+            {{ project.projectName }}
           </option>
         </select>
       </div>
       <div class="notes">
         <label for="notes">Notes</label>
-        <input type="text" >
+        <input type="text" formControlName="Notes">
       </div>
     </div>
    <!--second div --> 
@@ -41,11 +23,10 @@
 
       <div class="Equipmenttype">
          <label for="Equipmenttype">Equipment Type</label>
-         <select  name="options">
+         <select name="options" formControlName=" EquipmentType">
           <option>----select----</option>
-          <option *ngfor="let equip of apiData">
-            {{equip.id}}
-            {{equip.equipmentname}}
+          <option *ngFor="let equip of equipmentdata" [value]="equip.id">
+            {{ equip.equipmentName}}
           </option>
         </select>
          
@@ -55,10 +36,10 @@
           <label for="shift">Shift</label>
           <div class="toggle-group">
             <div class="shiftsize">
-            <input type="radio" id="toggle1_yes" name="toggle1" value="yes">
+            <input type="radio" id="toggle1_yes" name="toggle1" value="yes" formControlName="Shift">
             <label for="toggle1_yes">1&nbsp; &nbsp; &nbsp; </label>
             
-            <input type="radio" id="toggle1_no" name="toggle1" value="no">
+            <input type="radio" id="toggle1_no" name="toggle1" value="no" formControlName="Shift">
             <label for="toggle1_no">2&nbsp; &nbsp; &nbsp; </label>
           </div>
           </div>
@@ -68,10 +49,10 @@
           <div class="fuel">
           <label for="fuel">Fuel</label>
           <div class="toggle-group">
-            <input type="radio" id="toggle2_yes" name="toggle2" value="yes">
+            <input type="radio" id="toggle2_yes" name="toggle2" value="yes" formControlName="Fuel">
             <label for="toggle2_yes">Yes&nbsp; &nbsp; &nbsp; </label>
             
-            <input type="radio" id="toggle2_no" name="toggle2" value="no">
+            <input type="radio" id="toggle2_no" name="toggle2" value="no" formControlName="Fuel">
             <label for="toggle2_no">No&nbsp; &nbsp; &nbsp; </label>
           </div>
         </div>
@@ -79,10 +60,10 @@
         <div class="Operator">
           <label for="operator">Operator</label>
           <div class="toggle-group">
-            <input type="radio" id="toggle3_yes" name="toggle3" value="yes">
+            <input type="radio" id="toggle3_yes" name="toggle3" value="yes" formControlName="Operator">
             <label for="toggle3_yes">Yes&nbsp; &nbsp; &nbsp; </label>
             
-            <input type="radio" id="toggle3_no" name="toggle3" value="no">
+            <input type="radio" id="toggle3_no" name="toggle3" value="no" formControlName="Operator">
             <label for="toggle3_no">No&nbsp; &nbsp; &nbsp; </label>
           </div>
         </div>
@@ -91,10 +72,10 @@
         <div class="driver">
           <label for="driver">Driver</label>
           <div class="toggle-group">
-            <input type="radio" id="toggle4_yes" name="toggle4" value="yes">
+            <input type="radio" id="toggle4_yes" name="toggle4" value="yes" formControlName="Driver">
             <label for="toggle4_yes">Yes&nbsp; &nbsp; &nbsp; </label>
             
-            <input type="radio" id="toggle4_no" name="toggle4" value="no">
+            <input type="radio" id="toggle4_no" name="toggle4" value="no" formControlName="Driver">
             <label for="toggle4_no">No&nbsp; &nbsp; &nbsp; </label>
           </div>
         </div>
@@ -105,21 +86,28 @@
 
           <label for="trip">Duration</label>
           <div class="toggle-group">
-            <input type="radio" id="toggle5_yes" name="toggle5" value="yes">
+            <input type="radio" id="toggle5_yes" name="toggle5" value="yes" formControlName="Duration">
             <label for="toggle5_yes">Duration&nbsp; &nbsp; &nbsp; </label>
             
-            <input type="radio" id="toggle5_no" name="toggle5" value="no">
-            <label for="toggle5_no">Trip</label>
+            
           </div>
         </div>
 
+    
         <div class="date">
-          <label for="date">Date</label>
-          <input type="date">
+          <label for="startendate">Duration</label>
+          <input type="text" matInput ngxDaterangepickerMd placeholder="start date ~ end date"
+                 [locale]="{applyLabel: 'ok', format: 'DD-MM-YYYY'}" startKey="start"
+                 endKey="end" name="daterange"
+                 (datesUpdated)="datesUpdated($event)" />
         </div>
+        
+
+        
 
 </div>
-<button  class="addbtn">Add item#2</button>
+<!-- <button  class="addbtn">Add item#2</button> -->
 <button  class="cancel">Cancel</button>
-<button  class="Create-req">Create Request</button>
+<button  class="Create-req" type="submit">Create Request</button>
+</form>
 </div>

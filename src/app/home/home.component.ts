@@ -28,20 +28,18 @@ constructor(private formBuilder: FormBuilder,private router: Router, private htt
   onSubmit() {
   
     if (this.loginForm.valid) {
-    // localStorage.setItem('email', this.loginForm.value.email);
-    // localStorage.setItem('password', this.loginForm.value.password);
-    // this.authToken=this.randomtoken()
-    // localStorage.setItem('authToken', this.authToken);
-    
-    console.log(this.loginForm.value);
+   console.log(this.loginForm.value);
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     this.httpClient.post("http://localhost:8090/auth/login", {
       "email": this.loginForm.value.email,
       "password": this.loginForm.value.password
   }, { headers: headers }).subscribe(res => {
     console.log(res);
-    localStorage.setItem('authtoken',JSON.stringify(res))
     
+  
+   
+   
+   
     
   })
     this.router.navigate(['/dashboard']);

@@ -11,6 +11,10 @@ import { LoginComponent } from './login/login.component';
 import { GethelpComponent } from './gethelp/gethelp.component';
 import { CreateRequestComponent } from './create-request/create-request.component';
 import { TabledataComponent } from './tabledata/tabledata.component';
+import { FormsModule } from '@angular/forms';
+import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+import { DatePipe } from '@angular/common';
+
 
 
 @NgModule({
@@ -28,9 +32,11 @@ import { TabledataComponent } from './tabledata/tabledata.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+        NgxDaterangepickerMd.forRoot()
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

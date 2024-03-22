@@ -6,7 +6,7 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 import { GethelpComponent } from './gethelp/gethelp.component';
 import { CreateRequestComponent } from './create-request/create-request.component';
 import { TabledataComponent } from './tabledata/tabledata.component';
-import { AuthguardGuard } from './authguard.guard';
+
 
 
 const routes: Routes = [

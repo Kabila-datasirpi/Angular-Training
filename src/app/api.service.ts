@@ -13,8 +13,10 @@ export class ApiService {
   getdata(){
     return this.http.get(`${environment.baseUrl}/project`); 
     }
-    getEquipmentdata(){
+  getEquipmentdata(){
       return this.http.get(`${environment.baseUrl}/equipment`); 
       }
+  
   }
+
 
