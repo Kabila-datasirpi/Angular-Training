@@ -16,7 +16,8 @@ export class ApiService {
   getEquipmentdata(){
       return this.http.get(`${environment.baseUrl}/equipment`); 
       }
-  
+  postreqdata(data:any){
+    return this.http.post(`${environment.baseUrl}/request/create`,data)
   }
 
-
+}

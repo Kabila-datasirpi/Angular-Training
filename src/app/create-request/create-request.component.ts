@@ -71,7 +71,14 @@ export class CreateRequestComponent implements OnInit {
   
   
   onSubmit() {
-    console.log(this.requestCreateForm.value);
+   const data=this.requestCreateForm.value;
+   this.apiService. postreqdata(data).subscribe(reqresponse => {
+    console.log('Response:', reqresponse);
+    // Handle response as needed
+  });
+  
+
+  
   }
   
 }
