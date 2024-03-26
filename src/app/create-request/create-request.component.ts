@@ -25,16 +25,16 @@ export class CreateRequestComponent implements OnInit {
 
   constructor(private apiService: ApiService, private fb: FormBuilder, private datePipe: DatePipe) {
     this.requestCreateForm = this.fb.group({
-      ProjectName: [''],
-      Notes: [''],
-      EquipmentType: [''],
-      Shift: [''],
-      Fuel: [''],
-      Operator: [''],
-      Driver: [''],
-      Duration: [''],
-      durationfrom: [''],
-      durationto: [''],
+      projectName: [''],
+      notes: [''],
+      equipmentType: [''],
+      shift: [''],
+      fuel: [''],
+      operator: [''],
+      driver: [''],
+      // duration: [''],
+      durationFrom: [''],
+      durationTo: [''],
     });
   }
 
