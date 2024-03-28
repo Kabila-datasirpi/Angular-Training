@@ -1,0 +1,115 @@
+
+<div class="maincontainer">
+  <form [formGroup]="requestCreateForm" (ngSubmit)="onSubmit()">
+
+    <div class="Project">
+       <div class="projectname">
+        <label for="project">Project Name</label>
+        <select name="options" formControlName="projectName">
+          <option>----select----</option>
+          <option *ngFor="let project of apiData" [value]="project.id">
+            {{ project.projectName }}
+          </option>
+        </select>
+
+      </div>
+      
+      <div class="notes">
+        <label for="notes">Requisition Note</label>
+        <input type="text" formControlName="requisitionNote">
+      </div>
+    </div>
+   <!--second div --> 
+    <div class="Equipment">
+      
+
+      <div class="Equipmenttype">
+         <label for="Equipmenttype">Equipment Type</label>
+         <select name="options" formControlName="equipmentType">
+          <option>----select----</option>
+          <option *ngFor="let equip of equipmentdata" [value]="equip.equipmentName">
+            {{ equip.equipmentName}}
+          </option>
+        </select>
+         
+      </div>
+        
+      <div class="shift">
+          <label for="shift">Shift</label>
+          <div class="toggle-group">
+            <div class="shiftsize">
+            <input type="radio" id="toggle1_yes" name="toggle1" value="1" formControlName="shift">
+            <label for="toggle1_yes">1&nbsp; &nbsp; &nbsp; </label>
+            
+            <input type="radio" id="toggle1_no" name="toggle1" value="2" formControlName="shift">
+            <label for="toggle1_no">2&nbsp; &nbsp; &nbsp; </label>
+          </div>
+          </div>
+          </div>
+
+
+          <div class="fuel">
+          <label for="fuel">Fuel</label>
+          <div class="toggle-group">
+            <input type="radio" id="toggle2_yes" name="toggle2" value="true" formControlName="fuel">
+            <label for="toggle2_yes">Yes&nbsp; &nbsp; &nbsp; </label>
+            
+            <input type="radio" id="toggle2_no" name="toggle2" value="false" formControlName="fuel">
+            <label for="toggle2_no">No&nbsp; &nbsp; &nbsp; </label>
+          </div>
+        </div>
+
+        <div class="Operator">
+          <label for="operator">Operator</label>
+          <div class="toggle-group">
+            <input type="radio" id="toggle3_yes" name="toggle3" value="true" formControlName="operator">
+            <label for="toggle3_yes">Yes&nbsp; &nbsp; &nbsp; </label>
+            
+            <input type="radio" id="toggle3_no" name="toggle3" value="false" formControlName="operator">
+            <label for="toggle3_no">No&nbsp; &nbsp; &nbsp; </label>
+          </div>
+        </div>
+
+
+        <div class="driver">
+          <label for="driver">Driver</label>
+          <div class="toggle-group">
+            <input type="radio" id="toggle4_yes" name="toggle4" value="true" formControlName="driver">
+            <label for="toggle4_yes">Yes&nbsp; &nbsp; &nbsp; </label>
+            
+            <input type="radio" id="toggle4_no" name="toggle4" value="false" formControlName="driver">
+            <label for="toggle4_no">No&nbsp; &nbsp; &nbsp; </label>
+          </div>
+        </div>
+
+
+
+        <!-- <div class="trip">
+
+          <label for="trip">Duration</label>
+          <div class="toggle-group">
+            <input type="radio" id="toggle5_yes" name="toggle5" value="yes" formControlName="duration">
+            <label for="toggle5_yes">Duration&nbsp; &nbsp; &nbsp; </label>
+            
+            
+          </div>
+        </div> -->
+
+    
+        <div class="date">
+          <label for="startendate">Duration</label>
+          <input type="text" matInput ngxDaterangepickerMd placeholder="start date ~ end date"
+                 [locale]="{applyLabel: 'ok', format: 'DD-MM-YYYY'}" startKey="start"
+                 endKey="end" name="daterange"
+                 (datesUpdated)="datesUpdated($event)" />
+        </div>
+        
+
+        
+
+</div>
+<!-- <button  class="addbtn">Add item#2</button> -->
+<button  class="cancel">Cancel</button>
+<button  class="Create-req" type="submit" >Create Request</button>
+</form>
+</div>

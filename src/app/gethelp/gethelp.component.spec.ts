@@ -1,0 +1,23 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { GethelpComponent } from './gethelp.component';
+
+describe('GethelpComponent', () => {
+  let component: GethelpComponent;
+  let fixture: ComponentFixture<GethelpComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ GethelpComponent ]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(GethelpComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

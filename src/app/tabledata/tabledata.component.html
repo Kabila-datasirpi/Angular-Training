@@ -1,0 +1,43 @@
+<div class="requestcreate">
+<button routerLink="/dashboard/request" >create-request</button>
+</div>
+<h2>Project Details</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Request ID</th>
+            <th>Project Name</th>
+            <!-- <th>Requisition Note</th> -->
+            <th>Equipment Type</th>
+            <!-- <th>Shift</th>
+            <th>Fuel</th>
+            <th>Driver</th>
+            <th>Operator</th>
+            <th>Duration From</th>
+            <th>Duration To</th> -->
+            <th>Project Id</th>
+            <th>Created</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let project of  tableData | paginate: { itemsPerPage: 10, currentPage: p}">
+            <td>{{ project.id }}</td>
+            <td>{{ project.projectName }}</td>
+            <!-- <td>{{ project.requisitionNote }}</td> -->
+            <td>{{ project.equipmentType }}</td>
+            <!-- <td>{{ project.shift }}</td>
+            <td>{{ project.fuel }}</td>
+            <td>{{ project.driver }}</td>
+            <td>{{ project.operator }}</td>
+            <td>{{ project.durationFrom }}</td>
+            <td>{{ project.durationTo }}</td> -->
+            <td>{{ project.projectId }}</td>
+            <td>{{ project. created}}</td>
+
+        </tr>
+    </tbody>
+</table>
+<div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

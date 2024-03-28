@@ -1,0 +1,42 @@
+.requestcreate>button{
+  border-radius: 10px;
+  height: 40px;
+  width: 200px;
+  margin: 15px;
+  background-color:#339f40;
+  color: white;
+  margin-left: 1400px;
+  border: none;
+}
+
+
+
+
+.tabledata{
+    height:100vh;
+    width:180vh;
+   
+  }
+  h2 {
+    text-align: center;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color:#326af1;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
